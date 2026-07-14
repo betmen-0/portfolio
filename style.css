@@ -76,3 +76,39 @@ body.loading {
     text-align: center;
 }
 
+.site {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height) !important;
+    padding: 0.5rem 2rem !important;
+    background: rgba(246,243,238,0.95);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.logo {
+    height: 64px !important;
+    max-height: 64px !important;
+    line-height: 64px !important;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar a {
+    font-family: var(--hand-font);
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem !important;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 0 0.35rem;
+}
+
