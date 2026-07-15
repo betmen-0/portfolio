@@ -112,3 +112,32 @@ body.loading {
     padding: 0 0.35rem;
 }
 
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 0rem;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 0rem;
+    overflow: hidden;
+}
+
+.fullpage-section {
+    margin: 0rem 0;
+    width: 100%;
+}
+
+.hero-art {
+    width: 102% !important;
+    display: block;
+    height: auto;
+    max-width: none !important;
+    transform-origin: top center;
+    margin: 0 -0.5% !important;
+    position: relative;
+    z-index: 1;
+}
+
