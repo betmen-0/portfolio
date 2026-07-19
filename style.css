@@ -371,7 +371,119 @@ main {
     right: calc((110% - 600px) / 2 - 40px);
 }
 
-#projects .section-title {
+#projects .section-title, #corkboard-section {
     text-align: center;
     margin: 1.25rem auto;
 }
+
+.corkboard-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 55px;
+}
+
+.corkboard-view {
+    position: relative;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.corkboard-svg {
+    width: 100%;
+    height: auto;
+    max-width: var(--max-width);
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.corkboard-surface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.corkboard-bounds {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50% , -50%) !important;
+    width: 650px !important;
+    height: 400px !important;
+    z-index: 1 !important;
+}
+
+.corkboard-controls {
+    position: relative;
+}
+
+.cork-add-btn {
+    position: absolute !important;
+    bottom: 50px !important;
+    right: 50px !important;
+    width: 52px !important;
+    height: 52px !important;
+    display: flex !important;
+    border: none !important;
+    border-radius: 999px !important;
+    background: #fff !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+    z-index: 100000 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 28px !important;
+    cursor:  pointer !important;
+    transition: transform 0.2s ease , box-shadow 0.2s ease;
+}
+
+.cork-add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.note-editor.hidden {
+    display: none;
+}
+
+.note-editor-modal {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 999999;
+}
+
+.note-editor-modal.hidden {
+    display: none;
+}
+
+.note-editor-card {
+    width: min(400px, 92vw);
+    background: #fffaf5;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1000000;
+}
+
+.note-editor-card textarea {
+    width: 95%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    resize: none;
+}
+

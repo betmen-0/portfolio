@@ -119,7 +119,37 @@
                 </div>
             </section>
             
+            <section id="corkboard-section" class="corkboard-wrapper fullpage-section">
+                <h2 class="section-title">CorkBoard</h2>
+
+                <div class="corkboard-view">
+                    <img src="assets/corkboard.svg" class="corkboard-svg" alt="Corkboard">
+
+                    <div id="corkboard" class="corkboard-surface" aria-label="Corkboard">
+                        <div class="corkboard-bounds"></div>
+                    </div>
+
+                    <div class="corkboard-controls">
+                        <button id="addNoteBtn" class="cork-add-btn" title="Add a Note">+</button>
+                    </div>
+                </div>
+
+                <div class="note-editor hidden" aria-hidden="true"></div>
+            </section> 
         </main>
+        <div class="note-editor-modal hidden" id="noteEditorModal">
+            <div class="note-editor-card">
+                <textarea id="noteText" maxlength="100" placeholder="Type a Message (100 chars max)"></textarea>
+                <div class="editor-row">
+                    <input type="text" id="noteName" maxlength="20" placeholder="Name (20 chars max)"/>
+                    <div class="color-palette"></div>
+                </div>
+                <div class="editor-actions">
+                    <button id="cancelNote" class="btn-cancel">Cancel</button>
+                    <button id="saveNote" class="btn-save">Save</button>
+                </div>
+            </div>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
