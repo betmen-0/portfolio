@@ -482,8 +482,173 @@ main {
     padding: 12px;
     border: 1px solid black;
     border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.45;
     margin-bottom: 12px;
     font-size: 15px;
     resize: none;
 }
 
+.note.note-editor-card textarea, .note-editor-card input {
+    font-family: var(--ui-font), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+.note-editor-card input::placeholder, .note-editor-card textarea::placeholder {
+    color: #bfbfbf;
+    font-weight: 500;
+}
+
+.note-editor-card input {
+    font-size: 14.5px;
+}
+
+.editor-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.editor-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.color-palette {
+    display: flex;
+    gap: 8px;
+}
+
+.color-btn {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #555;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.color-btn.selected {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 1px #333;
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-cancel {
+    padding: 8px 18px;
+    background: #f2d9d9;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-cancel:hover {
+    background: #e8c5c5;
+}
+
+.btn-save {
+    background: #2b2b2b;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-save:hover {
+    background: #000;
+}
+
+.sticky-note {
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+    overflow: visible;
+    width: 180px;
+    height: 180px;
+    transform-origin: center center;
+    background: #fff;
+    cursor: grab;
+}
+
+.sticky-note.dragging {
+    cursor: grabbing;
+}
+
+.note-content {
+    position: relative;
+    z-index: 2;
+    padding: 14px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.note-date {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.note-msg {
+    flex: 1;
+    font-size: 15px;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+}
+
+.note-signer {
+    font-size: 11px;
+    color: #333;
+    text-align: right;
+    margin-top: auto;
+    font-weight: 600;
+}
+
+.note-delete {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: rgba(0, 0, 0, 0.08);
+    color: #333;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.note-delete:hover,
+.note-delete:focus {
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.note-rough {
+    pointer-events: none;
+}
