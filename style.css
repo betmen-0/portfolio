@@ -652,3 +652,41 @@ main {
 .note-rough {
     pointer-events: none;
 }
+
+.site-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 94% !important;
+    max-width: 100% !important;
+    height: var(--header-height) !important;
+    padding: 0 2rem !important;
+    border-radius: 8px !important;
+}
+
+.footer-logo {
+    height: 64px !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding-left: 0px !important;
+}
+
+.social {
+    display: flex !important;
+    align-items: center !important;
+    gap: 32px !important;
+    padding-right: 0px !important;
+    height: 100% !important;
+}
+
+.social img {
+    height: 50px !important;
+    width: auto !important;
+    opacity: 0.85 !important;
+    transition: all 0.2s ease !important;
+}
+
+.social img:hover {
+    transform: translateY(-2px) !important;
+    opacity: 1 !important;
+}

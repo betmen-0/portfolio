@@ -259,3 +259,91 @@ const initNoteEditor = () => {
     modal.querySelector('#saveNote').addEventListener('click', saveNote);
 };
 
+initNoteEditor();
+
+document.addEventListener('DOMContentLoaded' , () => {
+    const container = document.querySelector('.container');
+    const projectSection = document.querySelector('#projects');
+    if (!container || !projectSection || typeof rough === 'undefined') return;
+
+    let borderSvg = container.querySelector('.projects-border-svg');
+    if (!borderSvg) {
+        borderSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        borderSvg.classList.add('projects-border-svg');
+        borderSvg.style.position = 'absolute';
+        borderSvg.style.top = '0';
+        borderSvg.style.left = '0';
+        borderSvg.style.width = '100%';
+        borderSvg.style.height = '100%';
+        borderSvg.style.pointerEvents = 'none';
+        borderSvg.style.zIndex = '50';
+        container.insertBefore(borderSvg, container.firstChild);
+    }
+
+    const rc = rough.svg(borderSvg);
+
+    function roundedPath (x,y,q,h,r) {
+        return [
+            `M${x + r},${y}`,
+            `H${x + w - r}`,
+            `A${r},${r} 0 0 1 ${x + w},${y + r}`,
+            `V${y + h - r}`,
+            `A${r},${r} 0 0 1 ${x + w - r},${y + h}`,
+            `H${x + r}`,
+            `A${r},${r} 0 0 1 ${x},${y + h - r}`,
+            `V${y + r}`,
+            `A${r},${r} 0 0 1 ${x + r},${y}`,
+            'Z'
+        ].join(' ');
+    }
+
+    let rafId = null;
+    function drawBorder() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            borderSvg.innerHTML = '';
+
+            const contRect = container.getBoundingClientRect();
+            const projRect = projectSection.getBoundingClientRect();
+
+            const inset = 8;
+            const startAbove = 12;
+            const extendBelow = -15;
+
+            const x = inset;
+            const y = Math.max(0, Math.round(projRect.top - contRect.top - startAbove));
+            const w = Math.round(contRect.width - inset * 2);
+
+            const contentH = Math.round(projRect.height);
+            const h = Math.round(contentH + startAbove + extendBelow);
+
+            const svgW = Math.round(contRect.width);
+            const svgH = Math.max(Math.round(contRect.height), y + h + inset);
+            
+            borderSvg.setAttribute('width', svgW);
+            borderSvg.setAttribute('height' , svgH);
+            borderSvg.setAttribute('viewBox', `0 0 ${svgW} ${svgH}`);
+            borderSvg.style.height = `${svgH}px`;
+
+            const radius = Math.max(18, Math.round(w * 0.03));
+
+            const pathStr = roundedPath(x,y,w,h, radius);
+            const node = rc.path(pathStr, {
+                stroke: '#000',
+                strokeWidth: 3,
+                roughness: 1.6,
+                fill: 'transparent',
+                bowing: 2
+            });
+
+            borderSvg.appendChild(node);
+        });
+    }
+
+    drawBorder();
+    let t;
+    window.addEventListener('resize', () => {
+        clearTimeout(t); t = setTimeout(drawBorder, 120);
+    });
+    window.addEventListener('load', drawBorder);
+});
